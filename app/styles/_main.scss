@@ -1,0 +1,46 @@
+.main {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 56px);
+}
+
+
+.sidedrawer {
+  position: absolute;
+  display: block;
+  width: calc(100% - 2 * 24px);
+  max-width: 500px;
+  height: 450px;
+  margin: 0;
+  margin-left: 24px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.75);
+  padding: 24px 16px;
+  transform: translate3d(calc(-100% - 24px), 0, 0);
+
+
+  &__toggler {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(100%) rotate(180deg);
+  }
+
+  &--open {
+    transform: translateX(0);
+
+    .sidedrawer__toggler {
+      transform: translateX(0);
+    }
+  }
+
+  .brand {
+    font-size: 1.8em;
+    color: #B7121C;
+    font-family: 'Revalia', cursive;
+
+    span {
+      color: #003E1F;
+      font-size: 0.8em;
+    }
+  }
+}

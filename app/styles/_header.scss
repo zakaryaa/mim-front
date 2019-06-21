@@ -1,0 +1,123 @@
+$header-height: 56px;
+
+.header {
+  position: relative;
+  width: 100vw;
+  height: $header-height;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.75);
+
+
+
+  .hamburger {
+    background: transparent;
+    border: none;
+    // removes native blue focus
+    outline: none;
+    border-radius: 2px;
+    margin-left: auto;
+
+    &:hover,
+    &:focus {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
+  }
+}
+
+.menu {
+  $self: &;
+  top: $header-height + 16px;
+  right: 0;
+  position: absolute;
+  height: 356px;
+  // We give the element a 90% width but it won't
+  // exceed 350px because we give it a max-width value
+  width: 90%;
+  max-width: 350px;
+  background: white;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.75);
+  z-index: 9999;
+  // Changing the X value to hide the element all the way to the right
+  transform: translate3d(120%, 0, 0);
+  // This will tell the browser that this element is changing position
+  // so create a new layer for it
+  will-change: transform;
+  transition: transform 0.3s ease;
+
+
+  @media screen and (min-width: 800px) {
+    transform: translateX(0);
+    position: initial;
+    height: auto;
+    width: auto;
+    box-shadow: none;
+    background: transparent;
+    margin-left: auto;
+
+    #{$self}__list {
+      flex-direction: row;
+      margin: 0;
+    }
+
+    #{$self}__item {
+      a {
+        padding: 8px;
+      }
+
+      a:hover,
+      a:focus {
+        border-left: none;
+        border-bottom: 4px solid blue;
+      }
+    }
+  }
+
+
+
+  &--open {
+    transform: translateX(0);
+
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  &__item {
+    text-align: center;
+
+    a {
+      padding: 16px;
+      display: block;
+      width: 100%;
+      outline: none;
+
+      &,
+      &:visited,
+      &:active {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      &:hover,
+      &:focus,
+      &.active {
+        background: rgba(0, 0, 0, 0.05);
+        border-left: 4px solid blue;
+      }
+    }
+
+
+
+  }
+
+}
